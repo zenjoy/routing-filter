@@ -23,9 +23,11 @@ journey::Router.class_eval do
 
     find_routes_without_filtering(env).map do |match, parameters, route|
       [ match, parameters.merge(filter_parameters), route ]
-    end.tap do |match, parameters, route|
-      env['PATH_INFO'] = original_path # restore the original path
-    end
+    end #.tap do |match, parameters, route|
+    #  env['PATH_INFO'] = original_path # restore the original path
+    #end
+    #
+    # TODO: make this configurable
   end
   alias_method_chain :find_routes, :filtering
 end
